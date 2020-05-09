@@ -8,7 +8,6 @@ package br.com.parg.viacep;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 /**
  * Classe java para obter um CEP no ViaCEP
  *
