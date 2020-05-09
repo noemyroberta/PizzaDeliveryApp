@@ -5,6 +5,7 @@ public class DeliveryBoys extends People {
     private int numberTotalDeliveries;
     private int numberDeliveriesDay;
     private String aerea;
+    private char id[] = new char[3];
 
     public DeliveryBoys() {
 
@@ -12,12 +13,13 @@ public class DeliveryBoys extends People {
 
     public DeliveryBoys(String cpf, String fullName, String zipCode, String street, String neighborhood,
                         String number, String telephoneNumber, int numberTotalDeliveries,
-                        int numberDeliveriesDay, String aerea) {
+                        int numberDeliveriesDay, String aerea, char id[]) {
         super(cpf, fullName, zipCode, street, neighborhood, number, telephoneNumber);
 
         this.numberTotalDeliveries = numberTotalDeliveries;
         this.numberDeliveriesDay = numberDeliveriesDay;
         this.aerea = aerea;
+        this.id = id;
     }
 
     public int getNumberTotalDeliveries() {
@@ -44,4 +46,11 @@ public class DeliveryBoys extends People {
         this.aerea = aerea;
     }
 
+    public char[] getId() {
+        return this.id;
+    }
+
+    public void setId(char id[]) {
+        this.id = id;
+    }
 }
