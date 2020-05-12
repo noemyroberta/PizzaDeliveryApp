@@ -99,4 +99,5 @@ public abstract class People {
     public int hashCode() {
         return Objects.hash(cpf, fullName, zipCode);
     }
+
 }
