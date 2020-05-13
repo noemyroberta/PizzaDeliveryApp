@@ -100,4 +100,16 @@ public abstract class People {
         return Objects.hash(cpf, fullName, zipCode);
     }
 
+    @Override
+    public String toString() {
+        return "People{" +
+                "cpf='" + cpf + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", street='" + street + '\'' +
+                ", neighborhood='" + neighborhood + '\'' +
+                ", number='" + number + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
+                '}';
+    }
 }

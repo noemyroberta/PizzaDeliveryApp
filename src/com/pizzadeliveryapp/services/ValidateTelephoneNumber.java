@@ -1,14 +1,8 @@
 package com.pizzadeliveryapp.services;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class ValidateTelephoneNumber {
 
-    public boolean isValidIndianMobileNumber(String str) {
-        Pattern pattern = Pattern.compile("^(?:(?:\\+|0{0,2})91(\\s*[\\-]\\s*)?|[0]?)?[789]\\d{9}$");
-        Matcher matcher = pattern.matcher(str);
-
-        return (matcher.find() && matcher.group().equals(str));
+    public boolean isTelephoneNumber(String telephoneNumber) {
+        return telephoneNumber.matches("(\\(?\\d{2}\\)?\\s)?(\\d{4,5}\\-\\d{4})");
     }
 }

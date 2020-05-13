@@ -40,13 +40,7 @@ public class Customers extends People {
     @Override
     public String toString() {
         return "Customers{" +
-                "cpf='" + super.getCpf() + '\'' +
-                ", fullName='" + super.getFullName() + '\'' +
-                ", zipCode='" + super.getZipCode() + '\'' +
-                ", street='" + super.getStreet() + '\'' +
-                ", neighborhood='" + super.getNeighborhood() + '\'' +
-                ", number='" + super.getNumber() + '\'' +
-                ", telephoneNumber='" + super.getTelephoneNumber() + '\'' +
+                super.toString() +
                 "numberRegisteredOrders=" + numberRegisteredOrders +
                 '}';
     }
