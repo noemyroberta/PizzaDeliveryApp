@@ -2,26 +2,26 @@ package com.pizzadeliveryapp.services;
 
 import br.com.parg.viacep.ViaCEP;
 import br.com.parg.viacep.ViaCEPException;
-import com.pizzadeliveryapp.models.Customers;
+import com.pizzadeliveryapp.models.DeliveryBoys;
 
-public class CustomersService {
+public class DeliveryBoysService {
 
-    public Customers checkData(Customers obj) throws ViaCEPException {
+    public DeliveryBoys checkData(DeliveryBoys obj) throws ViaCEPException {
+        String zipCode = obj.getZipCode();
         String cpf = obj.getCpf();
-        String code = obj.getZipCode();
         String telephoneNumber = obj.getTelephoneNumber();
 
-        ViaCEP zipCodeChecked = checkZipCode(code);
+        ViaCEP zipCodeChecked = checkZipCode(zipCode);
 
         if(checkTelephoneNumber(telephoneNumber) &&
                 checkCpf(cpf) &&
-                 zipCodeChecked != null) {
+                zipCodeChecked != null) {
 
-            Customers customer = obj;
-            customer.setStreet(zipCodeChecked.getLogradouro());
-            customer.setNeighborhood(zipCodeChecked.getBairro());
+            DeliveryBoys deliveryBoy = obj;
+            deliveryBoy.setNeighborhood(zipCodeChecked.getBairro());
+            deliveryBoy.setStreet(zipCodeChecked.getLogradouro());
 
-            return customer;
+            return deliveryBoy;
         }
 
         return null;
@@ -45,10 +45,10 @@ public class CustomersService {
         validate.buscar(code);
 
         if(validate.getLogradouro() != null &&
-            validate.getBairro() != null)
+                validate.getBairro() != null)
             return validate;
 
         return null;
     }
-}
 
+}
