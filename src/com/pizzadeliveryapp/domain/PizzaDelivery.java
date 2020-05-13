@@ -11,8 +11,8 @@ public class PizzaDelivery {
 
     public static void main(String[] args) throws ViaCEPException {
 
-        Customers customer = new Customers("121.772.014-62", "Noemy Roberta", "57303-212",
-                "", "", "154", "(82) 99982-1117", 0);
+        Customers customer = new Customers("122.777.000-63", "Noemy Roberta", "57303-212",
+                "", "", "154", "(84) 99983-1111", 0);
         System.out.println(customer.toString());
         CustomersService service = new CustomersService();
         Customers customerChecked = service.checkData(customer);
