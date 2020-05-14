@@ -2,7 +2,7 @@ package com.pizzadeliveryapp.models;
 
 public class Orders {
 
-    private char[] promotionalCode = new char[10];
+    private String promotionalCode;
     private int discount;
     private String hourOrderSent;
     private String description;
@@ -13,7 +13,7 @@ public class Orders {
 
     }
 
-    public Orders(char[] promotionalCode, int discount, String hourOrderSent,
+    public Orders(String promotionalCode, int discount, String hourOrderSent,
                   String description, String payment, double totalPrice) {
         this.promotionalCode = promotionalCode;
         this.discount = discount;
@@ -30,11 +30,11 @@ public class Orders {
         this.totalPrice = totalPrice;
     }
 
-    public char[] getPromotionalCode() {
+    public String getPromotionalCode() {
         return promotionalCode;
     }
 
-    public void setPromotionalCode(char[] promotionalCode) {
+    public void setPromotionalCode(String promotionalCode) {
         this.promotionalCode = promotionalCode;
     }
 
@@ -77,6 +77,5 @@ public class Orders {
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
-
 
 }
