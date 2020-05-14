@@ -1,9 +1,11 @@
 package com.pizzadeliveryapp.models;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+
 public class Orders {
 
     private String promotionalCode;
-    private int discount;
     private String hourOrderSent;
     private String description;
     private String payment;
@@ -13,10 +15,9 @@ public class Orders {
 
     }
 
-    public Orders(String promotionalCode, int discount, String hourOrderSent,
-                  String description, String payment, double totalPrice) {
+    public Orders(String promotionalCode, String hourOrderSent, String description,
+                  String payment, double totalPrice) {
         this.promotionalCode = promotionalCode;
-        this.discount = discount;
         this.hourOrderSent = hourOrderSent;
         this.description = description;
         this.payment = payment;
@@ -36,14 +37,6 @@ public class Orders {
 
     public void setPromotionalCode(String promotionalCode) {
         this.promotionalCode = promotionalCode;
-    }
-
-    public int getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(int discout) {
-        this.discount = discout;
     }
 
     public String getHourOrderSent() {
@@ -78,4 +71,18 @@ public class Orders {
         this.totalPrice = totalPrice;
     }
 
+    @Override
+    public String toString() {
+        DecimalFormatSymbols x = new DecimalFormatSymbols();
+        x.setDecimalSeparator(',');
+        DecimalFormat f = new DecimalFormat("#.##", x);
+
+        return "Orders{" +
+                "promotionalCode='" + promotionalCode + '\'' +
+                ", hourOrderSent='" + hourOrderSent + '\'' +
+                ", description='" + description + '\'' +
+                ", payment='" + payment + '\'' +
+                ", totalPrice=" + f.format(totalPrice) +
+                '}';
+    }
 }

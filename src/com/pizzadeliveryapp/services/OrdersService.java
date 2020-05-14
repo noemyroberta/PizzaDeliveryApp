@@ -6,24 +6,45 @@ import java.util.*;
 public class OrdersService {
 
     public Orders checkData(Orders obj) {
-        return null;
+        String promoCode = obj.getPromotionalCode();
+        double totalPrice = obj.getTotalPrice();
+        String hourSent = obj.getHourOrderSent();
+
+        Orders order;
+
+        if(promoCode != null) {
+            totalPrice = getTotalPriceWithDiscount(promoCode, totalPrice);
+            order = obj;
+            order.setTotalPrice(totalPrice);
+            return order;
+        } else {
+            order = obj;
+            return order;
+        }
+    }
+
+    private double getTotalPriceWithDiscount(String promoCode, double totalPrice) {
+        double discount = readPromotionalCode(promoCode);
+        discount = totalPrice * (discount / 100);
+        totalPrice = totalPrice - discount;
+
+        return totalPrice;
     }
 
     private int readPromotionalCode(String code) {
         Integer discount;
-        String lastCharacteres;
+        String lastCharacters;
         String[] words = new String[]{"PIZZA", "DISCOUNT", "COMB", "PROMO"};
 
-        lastCharacteres = code.substring(code.length()-2);
+        lastCharacters = code.substring(code.length()-2);
         if(Arrays.stream(words).parallel().anyMatch(code::contains) &&
-                lastCharacteres.matches("[10-90]+")) {
-             discount = Integer.parseInt(lastCharacteres);
+                lastCharacters.matches("[10-90]+")) {
+             discount = Integer.parseInt(lastCharacters);
              return discount;
         }
 
         return 0;
     }
-
 
     private String generatePromotionalCode() {
         Random random = new Random();
@@ -45,16 +66,22 @@ public class OrdersService {
 
     public static void main(String[] args) {
 
-        /*OrdersService service = new OrdersService();
+        OrdersService service = new OrdersService();
+        /*
         for(int i=0; i<10; i++) {
             int discount = service.generateDiscountIn();
             System.out.println(discount+"\n");
         }*/
 
-        OrdersService service = new OrdersService();
-        String promotionalCode = service.generatePromotionalCode();
+        /*String promotionalCode = service.generatePromotionalCode();
         System.out.println(service.readPromotionalCode(promotionalCode));
 
+        */
+
+        Orders order = new Orders("PIZZA10", "15:02", 
+                "Tire o sorvete", "Dinheiro", 18.1);
+        Orders checked = service.checkData(order);
+        System.out.println(checked.toString());
     }
 
 }
